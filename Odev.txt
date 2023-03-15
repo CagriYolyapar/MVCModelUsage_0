@@ -1,0 +1,5 @@
+﻿1 =>  HiddenFor kullanmadan buraya güncellenecek Product'in ID'sini göndermeyi basarın
+
+2=>Employee Tablosu icin Crud sistemlerini de ekleyin
+
+3=> Su ana kadar yapmıs oldugunuz  veritabanlarında artık bire cok ilişkideki referans alan tablolarla da ilgili bütün crud işlemlerini yapınız...

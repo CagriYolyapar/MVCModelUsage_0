@@ -6,7 +6,7 @@ using System.Web;
 
 namespace MVCModelUsage_0.ViewModels.PageViewModels
 {
-    public class AddProductPageVM
+    public class AddUpdateProductPageVM
     {
         public ProductVM Product { get; set; }
         public List<CategoryVM> Categories { get; set; }

@@ -187,7 +187,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\PageViewModels\AddCategoryPageVM.cs" />
-    <Compile Include="ViewModels\PageViewModels\AddProductPageVM.cs" />
+    <Compile Include="ViewModels\PageViewModels\AddUpdateProductPageVM.cs" />
     <Compile Include="ViewModels\PageViewModels\ListCategoriesPageVM.cs" />
     <Compile Include="ViewModels\PageViewModels\ListProductsPageVM.cs" />
     <Compile Include="ViewModels\PageViewModels\UpdateCategoryPageVM.cs" />
@@ -265,6 +265,7 @@
     <Content Include="Views\Category\UpdateCategory.cshtml" />
     <Content Include="Views\Product\ListProducts.cshtml" />
     <Content Include="Views\Product\AddProduct.cshtml" />
+    <Content Include="Views\Product\UpdateProduct.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

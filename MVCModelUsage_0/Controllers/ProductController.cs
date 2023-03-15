@@ -36,7 +36,7 @@ namespace MVCModelUsage_0.Controllers
         public ActionResult AddProduct()
         {
             List<CategoryVM> categories = GetCategoriesAsVM();
-            AddProductPageVM apvm = new AddProductPageVM
+            AddUpdateProductPageVM apvm = new AddUpdateProductPageVM
             {
                 Categories = categories
             };
@@ -54,6 +54,42 @@ namespace MVCModelUsage_0.Controllers
                 CategoryID = product.CategoryID,    
             };
             _db.Products.Add(p);
+            _db.SaveChanges();
+            return RedirectToAction("ListProducts");
+        }
+
+        public ActionResult UpdateProduct(int id)
+        {
+            List<CategoryVM> categories = GetCategoriesAsVM();
+            AddUpdateProductPageVM apvm = new AddUpdateProductPageVM
+            {
+                Categories = categories,
+                Product = _db.Products.Where(x=>x.ProductID == id).Select(x=> new ProductVM
+                {
+                    ID = x.ProductID,
+                    ProductName = x.ProductName,
+                    CategoryID = x.CategoryID,
+                    UnitPrice = x.UnitPrice
+                }).FirstOrDefault()
+            };
+            return View(apvm);
+        }
+
+        [HttpPost]
+        public ActionResult UpdateProduct(ProductVM product)
+        {
+           
+            Product guncellenecek = _db.Products.Find(product.ID);
+            guncellenecek.ProductName = product.ProductName;
+            guncellenecek.UnitPrice = product.UnitPrice;
+            guncellenecek.CategoryID = product.CategoryID;
+            _db.SaveChanges();
+            return RedirectToAction("ListProducts");
+        }
+
+        public ActionResult DeleteProduct(int id)
+        {
+            _db.Products.Remove(_db.Products.Find(id));
             _db.SaveChanges();
             return RedirectToAction("ListProducts");
         }

@@ -1,0 +1,35 @@
+﻿@model AddUpdateProductPageVM
+
+
+@{
+    ViewBag.Title = "UpdateProduct";
+}
+
+@using (Html.BeginForm())
+{
+
+    @Html.HiddenFor(x=>x.Product.ID)
+
+
+    <div>
+        @Html.TextBoxFor(x => x.Product.ProductName, new { @class = "form-control" })
+    </div>
+    <div>
+        @Html.TextBoxFor(x => x.Product.UnitPrice, new {  @class = "form-control" })
+    </div>
+
+    <br />
+
+    <div>
+        @Html.DropDownListFor(x => x.Product.CategoryID, new SelectList(Model.Categories, "ID", "CategoryName"), "Lütfen seciniz", new { @class = "form-control" })
+    </div>
+
+    <br />
+
+    <div>
+        <button class="btn btn-success">
+            Güncelle
+        </button>
+    </div>
+}
+
