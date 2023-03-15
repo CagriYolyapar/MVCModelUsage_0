@@ -74,12 +74,12 @@ namespace MVCModelUsage_0.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddCategory(CategoryVM cvm)
+        public ActionResult AddCategory(CategoryVM category)
         {
             Category c = new Category
             {
-                CategoryName = cvm.CategoryName,
-                Description = cvm.Description
+                CategoryName = category.CategoryName,
+                Description = category.Description
             };
 
             _db.Categories.Add(c);

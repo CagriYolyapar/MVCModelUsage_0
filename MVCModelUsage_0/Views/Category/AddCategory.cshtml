@@ -1,4 +1,4 @@
-﻿@model CategoryVM
+﻿@model AddCategoryPageVM
 
 
 
@@ -10,11 +10,11 @@
 {
 
   <div>
-      @Html.TextBoxFor(x=>x.CategoryName)
+      @Html.TextBoxFor(x=>x.Category.CategoryName)
   </div>
 
   <div>
-      @Html.TextBoxFor(x=>x.Description)
+      @Html.TextBoxFor(x=>x.Category.Description)
   </div>
 
   <div>
