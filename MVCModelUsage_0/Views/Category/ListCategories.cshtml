@@ -1,0 +1,83 @@
+﻿@model ListCategoriesPageVM
+
+@{
+    ViewBag.Title = "ListCategories";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-4">
+
+
+            <table class="table table-hover">
+
+
+                <tr>
+                    <th>Kategori ID</th>
+                    <th>Kategori Ismi</th>
+                    <th>Kategori Acıklaması</th>
+                </tr>
+
+                @foreach (CategoryVM item in Model.Categories)
+                {
+                    <tr>
+                        <td>@item.ID</td>
+                        <td>@item.CategoryName</td>
+                        <td>@item.Description</td>
+                    </tr>
+                }
+
+
+            </table>
+
+
+        </div>
+
+
+
+        <div class="col-4">
+
+            <table class="table table-striped">
+                 <tr>
+                     <th>Ürün ID</th>
+                     <th>Ürün İsmi</th>
+                     <th>Ürün Fiyatı</th>
+                 </tr>
+
+                @foreach (ProductVM item in Model.Products)
+                {
+                    <tr>
+                        <th>@item.ID</th>
+                        <th>@item.ProductName</th>
+                        <th>@item.UnitPrice</th>
+                    </tr>
+                }
+
+
+
+            </table>
+
+
+
+        </div>
+
+        <div class="col-4">
+         <table class="table table-hover">
+             <tr>
+                 <th>Tedarikci ID</th>
+                 <th>Sirket Ismi</th>
+                 
+             </tr>
+
+             @foreach (SupplierVM item in Model.Suppliers)
+             {
+                 <tr>
+                     <td>@item.ID</td>
+                     <td>@item.CompanyName</td>
+                 </tr>
+
+             }
+         </table>
+        </div>
+    </div>
+</div>
