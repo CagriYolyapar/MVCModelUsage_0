@@ -1,0 +1,32 @@
+﻿
+@model AddProductPageVM
+
+
+@{
+    ViewBag.Title = "AddProduct";
+}
+
+@using (Html.BeginForm())
+{
+<div>
+    @Html.TextBoxFor(x => x.Product.ProductName, new { placeholder="Ürün ismi giriniz",@class="form-control"})
+</div>
+<div>
+    @Html.TextBoxFor(x => x.Product.UnitPrice, new { placeholder= "Fiyat giriniz",@class="form-control"})
+</div>
+
+<br />
+
+<div>
+    @Html.DropDownListFor(x => x.Product.CategoryID,new SelectList(Model.Categories,"ID","CategoryName"),"Lütfen seciniz",new {@class="form-control"})
+</div>
+
+<br />
+
+<div>
+    <button class="btn btn-success">
+        Ekle
+    </button>
+</div>
+}
+
