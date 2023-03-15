@@ -20,22 +20,7 @@ namespace MVCModelUsage_0.Controllers
         }
 
 
-       
-        public ActionResult ListCategories()
-        {
-            List<CategoryVM> categories = GetCategoryVMs();
-            List<ProductVM> products = GetProductVMs();
-            List<SupplierVM> suppliers = GetSupplierVms();
-
-            ListCategoriesPageVM cpvm = new ListCategoriesPageVM
-            {
-                Products = products,
-                Categories = categories,
-                Suppliers = suppliers
-            };
-            return View(cpvm);
-        }
-
+        #region VMMethods
         private List<ProductVM> GetProductVMs()
         {
             return _db.Products.Select(x => new ProductVM
@@ -62,8 +47,81 @@ namespace MVCModelUsage_0.Controllers
             {
                 ID = x.SupplierID,
                 CompanyName = x.CompanyName
-             
+
             }).ToList();
         }
+
+        #endregion
+
+        public ActionResult ListCategories()
+        {
+            List<CategoryVM> categories = GetCategoryVMs();
+            List<ProductVM> products = GetProductVMs();
+            List<SupplierVM> suppliers = GetSupplierVms();
+
+            ListCategoriesPageVM cpvm = new ListCategoriesPageVM
+            {
+                Products = products,
+                Categories = categories,
+                Suppliers = suppliers
+            };
+            return View(cpvm);
+        }
+
+        public ActionResult AddCategory()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddCategory(CategoryVM cvm)
+        {
+            Category c = new Category
+            {
+                CategoryName = cvm.CategoryName,
+                Description = cvm.Description
+            };
+
+            _db.Categories.Add(c);
+            _db.SaveChanges();
+            return RedirectToAction("ListCategories");
+        }
+
+        public ActionResult UpdateCategory(int id)
+        {
+            CategoryVM cvm = _db.Categories.Where(x => x.CategoryID == id).Select(x => new CategoryVM
+            {
+                ID = x.CategoryID,
+                CategoryName = x.CategoryName,
+                Description = x.Description
+            }).FirstOrDefault();
+
+            UpdateCategoryPageVM upcvm = new UpdateCategoryPageVM
+            {
+                Category = cvm
+            };
+            return View(upcvm);
+        }
+
+        //Eger size Front End'den Model bir paket halinde geliyorsa siz bunu spesifik yakalama yöntemini gerçekleştirmek icin property ismine dikkat etmelisiniz...
+
+        [HttpPost]
+        public ActionResult UpdateCategory(CategoryVM category)
+        {
+            Category guncellenecek = _db.Categories.Find(category.ID);
+            guncellenecek.CategoryName = category.CategoryName;
+            guncellenecek.Description = category.Description;
+            _db.SaveChanges();
+            return RedirectToAction("ListCategories");
+        }
+
+        public ActionResult DeleteCategory(int id)
+        {
+            _db.Categories.Remove(_db.Categories.Find(id));
+            _db.SaveChanges();
+            return RedirectToAction("ListCategories");
+        }
+
+       
     }
 }

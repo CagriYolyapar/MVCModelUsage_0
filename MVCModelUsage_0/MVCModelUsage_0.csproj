@@ -186,6 +186,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\PageViewModels\ListCategoriesPageVM.cs" />
+    <Compile Include="ViewModels\PageViewModels\UpdateCategoryPageVM.cs" />
     <Compile Include="ViewModels\PureViewModels\CategoryVM.cs" />
     <Compile Include="ViewModels\PureViewModels\ProductVM.cs" />
     <Compile Include="ViewModels\PureViewModels\SupplierVM.cs" />
@@ -256,6 +257,8 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Category\ListCategories.cshtml" />
+    <Content Include="Views\Category\AddCategory.cshtml" />
+    <Content Include="Views\Category\UpdateCategory.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
