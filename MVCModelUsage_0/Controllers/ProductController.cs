@@ -58,6 +58,9 @@ namespace MVCModelUsage_0.Controllers
             return RedirectToAction("ListProducts");
         }
 
+
+       
+
         public ActionResult UpdateProduct(int id)
         {
             List<CategoryVM> categories = GetCategoriesAsVM();
@@ -76,10 +79,10 @@ namespace MVCModelUsage_0.Controllers
         }
 
         [HttpPost]
-        public ActionResult UpdateProduct(ProductVM product)
+        public ActionResult UpdateProduct(ProductVM product,int id)
         {
            
-            Product guncellenecek = _db.Products.Find(product.ID);
+            Product guncellenecek = _db.Products.Find(id);
             guncellenecek.ProductName = product.ProductName;
             guncellenecek.UnitPrice = product.UnitPrice;
             guncellenecek.CategoryID = product.CategoryID;

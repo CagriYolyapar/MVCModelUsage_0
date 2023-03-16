@@ -96,7 +96,7 @@ namespace MVCModelUsage_0.Controllers
                 Description = x.Description
             }).FirstOrDefault();
 
-            UpdateCategoryPageVM upcvm = new UpdateCategoryPageVM
+            AddUpdateCategoryPageVM upcvm = new AddUpdateCategoryPageVM
             {
                 Category = cvm
             };
@@ -106,9 +106,9 @@ namespace MVCModelUsage_0.Controllers
         //Eger size Front End'den Model bir paket halinde geliyorsa siz bunu spesifik yakalama yöntemini gerçekleştirmek icin property ismine dikkat etmelisiniz...
 
         [HttpPost]
-        public ActionResult UpdateCategory(CategoryVM category)
+        public ActionResult UpdateCategory(CategoryVM category,int id)
         {
-            Category guncellenecek = _db.Categories.Find(category.ID);
+            Category guncellenecek = _db.Categories.Find(id);
             guncellenecek.CategoryName = category.CategoryName;
             guncellenecek.Description = category.Description;
             _db.SaveChanges();

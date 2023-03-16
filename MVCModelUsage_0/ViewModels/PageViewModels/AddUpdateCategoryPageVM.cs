@@ -6,7 +6,7 @@ using System.Web;
 
 namespace MVCModelUsage_0.ViewModels.PageViewModels
 {
-    public class AddCategoryPageVM
+    public class AddUpdateCategoryPageVM
     {
         public CategoryVM Category { get; set; }
     }
